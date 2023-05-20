@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ModeratorController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
-	return Inertia::render('Home');
+	return to_route('settings');
+});
+
+Route::controller(ModeratorController::class)->group(function () {
+	Route::get('/settings', 'index')->name('settings');
+	Route::post('/settings', 'store')->name('settings.store');
+	Route::patch('/settings/{moderator}', 'update')->name('settings.update');
+	Route::get('/settings/{moderator}/edit', 'edit')->name('settings.edit');
+	Route::delete('/settings/{moderator}', 'destroy')->name('settings.delete');
+});
+
+Route::fallback(function () {
+	return to_route('settings');
 });
