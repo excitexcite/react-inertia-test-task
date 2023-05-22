@@ -2,6 +2,7 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    margin-block: 10px;
 }
 
 td,
@@ -17,8 +18,8 @@ a {
     color: inherit;
 }
 
-tr:hover,
-tr:nth-child(even):hover {
+tbody tr:hover,
+tbody tr:nth-child(even):hover {
     background-color: grey;
 }
 
@@ -34,7 +35,6 @@ tr:nth-child(even) {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-block: 8px;
     font-size: 16px;
 }
 
